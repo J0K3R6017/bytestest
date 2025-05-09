@@ -14,10 +14,12 @@ jobs:
     runs-on: ubuntu-latest # use self-hosted machines if your Bytebase runs in internal networks.
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # set GITHUB_TOKEN because the 'Check release' step needs it to comment the pull request with check results.
-      BYTEBASE_URL: https://demo.bytebase.com
-      BYTEBASE_SERVICE_ACCOUNT: ci@service.bytebase.com
-      BYTEBASE_PROJECT: "projects/project-sample"
-      BYTEBASE_TARGETS: "instances/test-sample-instance/databases/hr_test"
+      BYTEBASE_URL: https://bytebase.orotechnologiesllc.com
+      BYTEBASE_SERVICE_ACCOUNT: api-sample@service.bytebase.com
+      BYTEBASE_PROJECT: "projects/oro"
+      # The Bytebase rollout pipeline will deploy to 'test' and 'prod' environments.
+      # 'deploy-to-test' job rollouts the 'test' stage and 'deploy-to-prod' job rollouts the 'prod' stage.
+      BYTEBASE_TARGETS: "instances/dev/databases/oro,instances/prod/databases/oro"
       FILE_PATTERN: "migrations/*.sql"
     steps:
       - name: Checkout
@@ -46,10 +48,12 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # set GITHUB_TOKEN because the 'Check release' step needs it to comment the pull request with check results.
-      BYTEBASE_URL: https://demo.bytebase.com
-      BYTEBASE_SERVICE_ACCOUNT: ci@service.bytebase.com
-      BYTEBASE_PROJECT: "projects/project-sample"
-      BYTEBASE_TARGETS: "instances/prod-sample-instance/databases/hr_prod"
+      BYTEBASE_URL: https://bytebase.orotechnologiesllc.com
+      BYTEBASE_SERVICE_ACCOUNT: api-sample@service.bytebase.com
+      BYTEBASE_PROJECT: "projects/oro"
+      # The Bytebase rollout pipeline will deploy to 'test' and 'prod' environments.
+      # 'deploy-to-test' job rollouts the 'test' stage and 'deploy-to-prod' job rollouts the 'prod' stage.
+      BYTEBASE_TARGETS: "instances/dev/databases/oro,instances/prod/databases/oro"
       FILE_PATTERN: "migrations/*.sql"
     steps:
       - name: Checkout
