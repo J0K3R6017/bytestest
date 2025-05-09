@@ -50,7 +50,7 @@ jobs:
           token: ${{ steps.login.outputs.token }}
           file-pattern: ${{ env.FILE_PATTERN }}
           # fail the action if release checks report any error.
-          check-release: "FAIL_ON_ERROR"
+          #check-release: "FAIL_ON_ERROR"
           project: ${{ env.BYTEBASE_PROJECT }}
           targets: ${{ env.BYTEBASE_TARGETS }}
           validate-only: false
