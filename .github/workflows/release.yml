@@ -72,7 +72,7 @@ jobs:
           url: ${{ env.BYTEBASE_URL }}
           token: ${{ steps.login.outputs.token }}
           plan: ${{ steps.create-plan.outputs.plan }}
-          target-stage: environments/test # the stage environment.
+          target-stage: environments/dev # the stage environment.
       - name: Deploy app
         run: |
           echo "Deploying app to test environment..."
